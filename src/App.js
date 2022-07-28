@@ -1,21 +1,31 @@
 import React from 'react'
 import './styles.css';
-import Content from './components/Profile'
-import Header from './components/Header'
-import Nav from './components/Nav';
-import Footer from './components/Footer';
-import Profile from './components/Profile';
+import Header from './components/header'
+
+import Footer from './components/footer';
+import Todo from "./components/todo";
+import Search from "./components/search-panel";
+import SearchPanel from "./components/search-panel";
+import {BrowserRouter, Route, Routes} from 'react-router-dom'
+import Nav from "./components/nav";
 
 
 const App = () => {
-  return (
-    <div className = 'app-wrapper'>
-      <Header /> 
-      <Nav />
-      <Profile />      
-      <Footer />
-    </div>
-  );
+    return (
+
+        <div className='app-wrapper'>
+            <BrowserRouter>
+                <Routes>
+
+
+                    <Route path="/" component={Nav}/>
+
+                </Routes>
+            </BrowserRouter>
+        </div>
+
+
+    );
 }
 
 

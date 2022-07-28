@@ -1,7 +1,7 @@
 const Footer = () => {
     return (
       <div>
-        Dmitry Pozner
+        footer
       </div>
       
     );
