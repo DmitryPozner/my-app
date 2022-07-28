@@ -1,9 +1,9 @@
-const SearchPanel =()=> {
-    return (
-    <div>
-        <input placeholder='search'/>
+const SearchPanel = () => {
+  return (
+    <div className="">
+      <input placeholder="search" />
     </div>
-    );
-}
+  );
+};
 
-export default SearchPanel
+export default SearchPanel;
