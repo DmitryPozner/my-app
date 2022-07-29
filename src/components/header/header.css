@@ -1,0 +1,8 @@
+.header {
+    align-items: flex-end;
+}
+.header h1 {
+    flex-grow: 1;
+    color: grey;
+    background-image: linear-gradient(whitesmoke, honeydew);
+}

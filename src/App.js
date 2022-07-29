@@ -1,10 +1,10 @@
 import React from "react";
 import "./styles.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Nav from "./components/nav";
-import Todo from "./components/todo";
-import Header from "./components/header";
-import SearchPanel from "./components/search-panel";
+import Nav from "./components/nav/nav";
+import Todo from "./components/todo/todo";
+import Header from "./components/header/header";
+import SearchPanel from "./components/search-panel/search-panel";
 
 const App = () => {
   const todoData = [
@@ -17,10 +17,10 @@ const App = () => {
       <BrowserRouter>
         <Header />
 
-        <Nav />
-        <SearchPanel />
+        {/*<Nav />*/}
+        {/*<SearchPanel />*/}
         <Routes>
-          <Route path="/todo" element={<Todo todos={todoData} />} />
+          <Route path="/" element={<Todo todos={todoData} />} />
         </Routes>
       </BrowserRouter>
     </div>
