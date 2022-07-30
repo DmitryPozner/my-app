@@ -1,6 +1,9 @@
 .btn {
-    background-color: grey;
+    background-color: #cbc3c3;
     display:inline-block;
     align-items: stretch;
+   }
 
+.item-status-item {
+    float:right;
 }
