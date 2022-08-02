@@ -1,31 +1,18 @@
 import React, { Component } from "react";
+import { FaTrashAlt } from "react-icons/fa";
+import { FiAlertCircle } from "react-icons/fi";
 import "./todo-list-item.css";
 
 export default class TodoListItem extends Component {
-  state = {
-    done: false,
-    important: false,
-  };
-
-  onLabelClick = () => {
-    this.setState(({ done }) => {
-      return {
-        done: !done,
-      };
-    });
-  };
-
-  onMarkImportant = () => {
-    this.setState(({ important }) => {
-      return {
-        important: !important,
-      };
-    });
-  };
-
   render() {
-    const { label } = this.props;
-    const { done, important } = this.state;
+    const {
+      label,
+      onDeleted,
+      onToggleImportant,
+      onToggleDone,
+      done,
+      important,
+    } = this.props;
 
     let classNames = "todo-list-item";
     if (done) {
@@ -36,18 +23,18 @@ export default class TodoListItem extends Component {
     }
     return (
       <span className={classNames}>
-        <span className="todo-list-item" onClick={this.onLabelClick}>
+        <span className="todo-list-item" onClick={onToggleDone}>
           {label}
         </span>
         <button
           type="button"
           className="btn btn-success"
-          onClick={this.onMarkImportant}
+          onClick={onToggleImportant}
         >
-          !
+          <FiAlertCircle size={16} />
         </button>
-        <button type="button" className="btn btn-danger">
-          Remove
+        <button type="button" className="btn btn-danger" onClick={onDeleted}>
+          <FaTrashAlt size={16} />
         </button>
       </span>
     );

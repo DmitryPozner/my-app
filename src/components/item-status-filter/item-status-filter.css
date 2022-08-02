@@ -1,9 +1,10 @@
 .btn {
     background-color: #cbc3c3;
     display:inline-block;
-    align-items: stretch;
+    /*align-items: stretch;*/
    }
 
 .item-status-item {
-    float:right;
+    /*float:right;*/
+    justify-content: flex-start;
 }
