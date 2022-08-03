@@ -1,10 +1,9 @@
 .todo-list-item {
-    margin-right: auto;
+    display: flex;
+    justify-content: space-between;
 }
 .btn {
-    margin-right: auto;
     background-color: antiquewhite;
-    float: right;
 }
 .todo-list-item-done{
     text-decoration:line-through;

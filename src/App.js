@@ -5,25 +5,26 @@ import "./styles.css";
 import Todo from "./components/todo/todo";
 import Header from "./components/header/header";
 import SearchPanel from "./components/search-panel/search-panel";
+import { createTodoItem } from "./utils";
 
 export default class App extends Component {
   maxId = 100;
   state = {
     todoData: [
-      this.createTodoItem("task 1"),
-      this.createTodoItem("task 2"),
-      this.createTodoItem("task 3"),
+      createTodoItem("task 1", ++this.maxId),
+      createTodoItem("task 2", ++this.maxId),
+      createTodoItem("task 3", ++this.maxId),
     ],
   };
+  //
+  // componentDidMount() {
+  //   // fetch("httppxl plzhlorttt/vo,mrmrt")
+  //   //     .then(response => response.json())
+  //   //     .then(clearData => {
+  //   //       this.setState({comment: clearData})
+  //   //     })
+  // })
 
-  createTodoItem(label) {
-    return {
-      label,
-      important: false,
-      done: false,
-      id: this.maxId++,
-    };
-  }
   delItem = (id) => {
     const filtered = this.state.todoData.filter((todo) => {
       return todo.id !== id;
@@ -34,7 +35,7 @@ export default class App extends Component {
     });
   };
   addItem = (text) => {
-    const newItem = this.createTodoItem(text);
+    const newItem = createTodoItem(text, ++this.maxId);
 
     this.setState(({ todoData }) => {
       const newArray = [...todoData, newItem];
@@ -45,26 +46,21 @@ export default class App extends Component {
   };
 
   toggleProp(arr, id, propName) {
-    const idx = arr.findIndex((el) => el.id === id);
-    const oldItem = arr[idx];
-    const newItem = { ...oldItem, [propName]: !oldItem[propName] };
+    return arr.map((el) => {
+      if (el.id !== id) return el;
 
-    return [...arr.slice(0, idx), newItem, ...arr.slice(idx + 1)];
+      return { ...el, [propName]: !el[propName] };
+    });
   }
 
   onToggleDone = (id) => {
-    console.log("done");
-    this.setState(({ todoData }) => {
-      return {
-        todoData: this.toggleProp(todoData, id, "done"),
-      };
+    this.setState({
+      todoData: this.toggleProp(this.state.todoData, id, "done"),
     });
   };
   onToggleImportant = (id) => {
-    this.setState(({ todoData }) => {
-      return {
-        todoData: this.toggleProp(todoData, id, "important"),
-      };
+    this.setState({
+      todoData: this.toggleProp(this.state.todoData, id, "important"),
     });
   };
 
@@ -72,7 +68,6 @@ export default class App extends Component {
     const { todoData } = this.state;
     const doneCount = todoData.filter((el) => el.done).length;
     const todoCount = todoData.length - doneCount;
-    console.log(this.state.todoData);
 
     return (
       <div className="app-wrapper-content">

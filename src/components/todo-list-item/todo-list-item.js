@@ -27,16 +27,18 @@ export default class TodoListItem extends Component {
         <span className="todo-list-item" onClick={onToggleDone}>
           {label}
         </span>
-        <button
-          type="button"
-          className="btn btn-success"
-          onClick={onToggleImportant}
-        >
-          <FiAlertCircle size={16} />
-        </button>
-        <button type="button" className="btn btn-danger" onClick={onDeleted}>
-          <FaTrashAlt size={16} />
-        </button>
+        <div>
+          <button
+            type="button"
+            className="btn btn-success"
+            onClick={onToggleImportant}
+          >
+            <FiAlertCircle size={16} />
+          </button>
+          <button type="button" className="btn btn-danger" onClick={onDeleted}>
+            <FaTrashAlt size={16} />
+          </button>
+        </div>
       </span>
     );
   }
