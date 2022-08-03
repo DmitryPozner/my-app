@@ -1,12 +1,10 @@
 import React, { Component } from "react";
 import "./styles.css";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Nav from "./components/nav/nav";
+// import { BrowserRouter, Route, Routes } from "react-router-dom";
+// import Nav from "./components/nav/nav";
 import Todo from "./components/todo/todo";
 import Header from "./components/header/header";
 import SearchPanel from "./components/search-panel/search-panel";
-import ItemAddForm from "./components/item-add-form/item-add-form";
-import ItemStatusFilter from "./components/item-status-filter/item-status-filter";
 
 export default class App extends Component {
   maxId = 100;
@@ -27,14 +25,12 @@ export default class App extends Component {
     };
   }
   delItem = (id) => {
-    this.setState(({ todoData }) => {
-      const idx = todoData.findIndex((el) => el.id === id);
+    const filtered = this.state.todoData.filter((todo) => {
+      return todo.id !== id;
+    });
 
-      const newArr = [...todoData.slice(0, idx), ...todoData.slice(idx + 1)];
-
-      return {
-        todoData: newArr,
-      };
+    this.setState({
+      todoData: filtered,
     });
   };
   addItem = (text) => {
@@ -76,28 +72,19 @@ export default class App extends Component {
     const { todoData } = this.state;
     const doneCount = todoData.filter((el) => el.done).length;
     const todoCount = todoData.length - doneCount;
+    console.log(this.state.todoData);
+
     return (
       <div className="app-wrapper-content">
-        {/*<BrowserRouter>*/}
         <Header toDo={todoCount} done={doneCount} />
         <SearchPanel onAdd={this.addItem} />
-        <ItemStatusFilter />
+
         <Todo
           todos={todoData}
           onDeleted={this.delItem}
           onToggleImportant={this.onToggleImportant}
           onToggleDone={this.onToggleDone}
         />
-        {/*<ItemAddForm onAdd={this.addItem} />*/}
-        {/*  <Routes>*/}
-        {/*    <Route*/}
-        {/*      path="/"*/}
-        {/*      element={*/}
-        {/*        <Todo todos={this.state.todoData} onDeleted={this.delItem} />*/}
-        {/*      }*/}
-        {/*    />*/}
-        {/*  </Routes>*/}
-        {/*/!*</BrowserRouter>*!/*/}
       </div>
     );
   }

@@ -16,11 +16,12 @@ export default class TodoListItem extends Component {
 
     let classNames = "todo-list-item";
     if (done) {
-      classNames += "-done";
+      classNames += " todo-list-item-done";
     }
     if (important) {
-      classNames += "-important";
+      classNames += " todo-list-item-important";
     }
+
     return (
       <span className={classNames}>
         <span className="todo-list-item" onClick={onToggleDone}>

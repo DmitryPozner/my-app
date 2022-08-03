@@ -2,8 +2,8 @@ import React from "react";
 import TodoListItem from "../todo-list-item/todo-list-item";
 import searchPanel from "../search-panel/search-panel";
 import "./todo.css";
-import SearchPanel from "../search-panel/search-panel";
-import ItemStatusFilter from "../item-status-filter/item-status-filter";
+// import SearchPanel from "../search-panel/search-panel";
+// import ItemStatusFilter from "../item-status-filter/item-status-filter";
 
 const Todo = ({ todos, onDeleted, onToggleDone, onToggleImportant }) => {
   const todoElements = todos.map((item) => {
