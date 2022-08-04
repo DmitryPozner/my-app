@@ -16,6 +16,9 @@ export default class SearchPanel extends Component {
   onSubmit = (e) => {
     e.preventDefault();
     this.props.onAdd(this.state.label);
+    this.setState({
+      label: e.target.value,
+    });
   };
 
   render() {

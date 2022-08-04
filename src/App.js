@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import "./styles.css";
-// import { BrowserRouter, Route, Routes } from "react-router-dom";
-// import Nav from "./components/nav/nav";
 import Todo from "./components/todo/todo";
 import Header from "./components/header/header";
 import SearchPanel from "./components/search-panel/search-panel";
